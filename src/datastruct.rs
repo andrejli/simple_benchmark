@@ -10,3 +10,9 @@ impl Ryba {
     pub fn get_active(&self) -> bool { return self.active} // getter
     pub fn set_active(&mut self, value: bool) { self.active = value } // setter
 }
+
+pub struct Volaco {
+    pub d: Option<i32>,
+    pub e: Option<String>,
+    pub f: Option<bool>,
+}

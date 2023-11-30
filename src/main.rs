@@ -1,9 +1,12 @@
 
 use std::time::{SystemTime, UNIX_EPOCH};
+use crate::datastruct::Volaco;
+// use std::any::type_name;
 use rand::prelude::*;
 use bytes::Bytes;
 mod hashtools;
 mod datastruct;
+mod vectortools;
 
 
 /// Generate random number and return number as 32-bit integer
@@ -13,6 +16,14 @@ fn generate_random_value() -> i32 {
     let mut rng = rand::thread_rng();
     let result = rng.gen_range(1..1000000);  // ::<i32>();
     return result
+}
+/// Simple Generic function that shows us type of variable
+/// _ borowwed variable anytipe T
+/// return:: &str representation of variable type
+fn show_type<T> (_: &T) -> &str {
+    let a = std::any::type_name::<T>();
+    println!("{}", a);
+    return a
 }
 
 
@@ -110,5 +121,24 @@ fn main() {
     }
     println!(" {:?}", victor);
     println!(" {} Vector Length", victor.len());
+
+    // simple generic function shows type of any variable
+    let b: String = String::from("Hello");
+    let c: i32 = 5343;
+    show_type(&b);
+    show_type(&c);
+  
+   let nieco: Volaco = datastruct::Volaco {
+    d : Some(1908),
+    e: Some(String::from("Hello")),
+    f: None,
+   };
+   println!(" {:?}", nieco.d);
+   println!(" {:?}", nieco.e);
+   println!(" {:?}", nieco.f);
+
+   let result = nieco.d;
+   show_type(&result);
+
 }
 
